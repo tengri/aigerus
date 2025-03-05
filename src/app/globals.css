@@ -3,6 +3,17 @@
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-accent: var(--color-green-600);
+
+  --color-neutral-100: #FFFFFF;
+  --color-neutral-200: #F9F9F9;
+  --color-neutral-300: #F6F6F6;
+  --color-neutral-400: #E9E9E9;
+  --color-neutral-500: #B7B7B7;
+  --color-neutral-600: #8D8D91;
+  --color-neutral-700: #616066;
+  --color-neutral-800: #222223;
 }
 
 :root {
