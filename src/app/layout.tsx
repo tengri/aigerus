@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
+import { StrictMode } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,15 +27,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-100`}
       >
-<Nav/>
-
-        <div className="">{children}</div>
-
-        <Footer/>
-    
+        <StrictMode>
+          <Nav />
+          {children}
+          <Footer />
+        </StrictMode>
       </body>
     </html>
   );
