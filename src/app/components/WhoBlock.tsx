@@ -21,9 +21,12 @@ const facts = [
 
 export default function WhoBlock() {
   return (
-    <div className="max-w-screen-xl mx-auto flex flex-row gap-4 relative space-between py-8 space-between px-4">
+    <div
+      className="max-w-screen-xl mx-auto flex flex-row gap-4 relative space-between py-20 space-between px-4"
+      id="who"
+    >
       <Image
-        src="/images/who.jpg"
+        src="/images/landing/who-bg.png"
         alt="Айгерим Бекназарова"
         width={712}
         height={1280}
@@ -44,7 +47,7 @@ export default function WhoBlock() {
           {facts.map((fact) => (
             <div className="flex flex-row space-between" key={fact.number}>
               <div className="flex flex-col">
-                <p className="text-accent font-bold text-4xl">{fact.number}</p>
+                <p className="text-b font-bold text-4xl">{fact.number}</p>
                 <p className="text-neutral-500 text-lg">{fact.description}</p>
               </div>
             </div>

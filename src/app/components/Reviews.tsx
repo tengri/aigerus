@@ -34,7 +34,7 @@ export default function Reviews() {
     },
   ];
   return (
-    <div className="bg-neutral-300">
+    <div className="bg-neutral-300" id="reviews">
       <div
         id="reviews"
         className="max-w-screen-xl mx-auto flex flex-col gap-6 mt-8 py-8 px-4"

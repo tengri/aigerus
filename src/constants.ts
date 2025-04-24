@@ -1,22 +1,61 @@
-export const apartments = [
+import { IApartment } from "./types";
+
+export const apartments: IApartment[] = [
   {
-    id: 1,
-    name: "Terracotta",
+    id: "nuray-1",
+    name: "2-комнатная квартира · 45 м² · 5/10 этаж, Шевченко 96 — Сейфуллина",
+    residence: "Nur-ay Residence",
+    image: "/images/properties/nuray-1/1.jpg",
+    address: `Улица Шевченко, 96, 050022`,
+    coordinates: {
+      lat: 43.24541647453766,
+      lng: 76.93487181299527,
+    },
+    price: 20_000,
+    oldPrice: 25_000,
+    overview: `Уважаемые гости, бронирующие мгновенно, обращайте пожалуйста, внимание на время заезда и выезда! заезд после 14.00, выезд до 12.00`,
+  },
+  {
+    id: "abay-130-1",
+    name: "1-комнатная квартира · 40 м² · 9/9 этаж, Абая 130 — ТРЦ Глобус, Мега, Атакент",
+    residence: "Abay 130",
+    image: "/images/properties/abay-130-1/1.png",
+    address: `Проспект Абая 164/1`,
+    coordinates: {
+      lat: 43.23729539272685,
+      lng: 76.88846628601357,
+    },
+    price: 18_000,
+    oldPrice: 22_000,
+    overview: `Вашему вниманию предоставляется однокомнатная квартира в ЖК Абая 130, которая расположена на центральном проспекте г. Алматы. квартира чистая, аккуратная, без посторонних запахов`,
+  },
+  {
+    id: "terracotta-1",
+    name: "2-комнатная квартира · 35 м² · 12/12 этаж, Досмухамедова 97 — Стадион",
+    residence: "Terracotta",
     image: "/images/properties/terracotta/1.jpg",
     address: `Проспект Абая 164/1`,
+    coordinates: {
+      lat: 43.238949,
+      lng: 76.889709,
+    },
     price: 18_000,
     oldPrice: 22_000,
     overview:
-      "Terracotta is a new residential complex in the heart of Almaty. It is a 10-storey building with a total area of 10,000 square meters. The complex is located in the center of the city, near the main shopping street, the central square and the main transport hub.",
+      "Вашему вниманию предоставляется евро двухкомнатная квартира в ЖК Terracotta, которая расположена на центральном проспекте г. Алматы по Абая 164/1.",
   },
   {
-    id: 2,
-    name: "Nur-ay Residence na Shevchenko",
-    image: "/images/properties/nuray/1.jpg",
-    address: `Улица Шевченко, 96, 050022`,
+    id: "paladium-1",
+    name: "2-комнатная квартира · 35 м² · 12/12 этаж, Досмухамедова 97 — Стадион",
+    image: "/images/properties/paladium/1.png",
+    residence: "Paladium",
+    address: `Досмухамедова 97 — Стадион`,
+    coordinates: {
+      lat: 43.247354112670514,
+      lng: 76.92461500903455,
+    },
     price: 20_000,
     oldPrice: 25_000,
-    overview:
-      "Nur-ay Residence na Shevchenko is a new residential complex in the heart of Almaty. It is a 10-storey building with a total area of 10,000 square meters. The complex is located in the center of the city, near the main shopping street, the central square and the main transport hub.",
+    overview: `Сдается новая, чистая и аккуратная 2-х комнатная квартира с кухней студией в жилом комплексе "Palladium", после ремонта`,
   },
 ];

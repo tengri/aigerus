@@ -1,14 +1,16 @@
 import Hero from "./components/Hero";
-import Properties from "./components/Apartments";
 import Reviews from "./components/Reviews";
 import WhoBlock from "./components/WhoBlock";
+import MapBlock from "./components/MapBlock";
+import AppartamentList from "./components/AppartamentList";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Properties />
       <WhoBlock />
+      <AppartamentList />
+      <MapBlock />
       <Reviews />
     </main>
   );

@@ -1,41 +1,34 @@
+import { IApartment } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-interface Apartment {
-  id: number;
-  name: string;
-  image: string;
-  address: string;
-  price: number;
-  overview: string;
-}
-
-export default function ApartmentCard({ apartment }: { apartment: Apartment }) {
-  console.log(apartment);
+export default function ApartmentCard({
+  apartment,
+}: {
+  apartment: IApartment;
+}) {
   return (
     <Link
       href={`/apartments/${apartment.id}`}
-      className="bg-neutral-100 rounded-md h-150 relative gap-4 rounded-xl shadow-lg mt-8 p-8 min-w-100 w-1/3 flex flex-col"
+      className="rounded-4xl h-150 relative gap-4 rounded-xl shadow-lg mt-8 min-w-100 flex flex-col"
     >
-      <div className="w-full h-2/3 relative flex-shrink-0 overflow-hidden flex-grow-0">
+      <div className="w-full relative overflow-hidden h-1/3">
         <Image
           key={apartment.id}
           src={apartment.image}
           alt={apartment.name}
-          className="w-full h-full object-cover rounded-l-lg"
+          className="object-cover rounded-t-2xl"
           fill={true}
         />
       </div>
-      <div className="flex flex-col gap-2">
-        <div className="flex flex-col gap-2 justify-between">
-          <h1 className="text-neutral-500 font-bold text-2xl">
-            {apartment.address}
-          </h1>
-          <h2 className="text-accent font-bold text-2xl">
-            {apartment.price} тг
-          </h2>
+      <div className="p-7 flex flex-col gap-3">
+        <h4 className="text-accent font-bold text-2xl">{apartment.price} тг</h4>
+        <div className="flex flex-row gap-2">
+          <p className="text-neutral-800 font-bold text-2xl">
+            {apartment.name}
+          </p>
+          <p className="text-neutral-600 text-lg">{apartment.address}</p>
         </div>
-        <h2 className="text-neutral-800 font-bold text-lg">{apartment.name}</h2>
       </div>
     </Link>
   );

@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/Apartments.tsx"
+    "src/app/components/ApartmentGrid.tsx"
   ],
   "exclude": ["node_modules"]
 }
