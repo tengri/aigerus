@@ -30,6 +30,20 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-YLRQLF24M7"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YLRQLF24M7');
+            `,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-100`}
