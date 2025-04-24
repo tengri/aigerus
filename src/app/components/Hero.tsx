@@ -10,7 +10,7 @@ export default function Hero() {
   console.log("HERO_IMAGE_HEIGHT: ", HERO_IMAGE_HEIGHT);
   return (
     <div
-      className={`mx-auto bg-stone-50 flex flex-col lg:flex-row justify-between max-w-screen-xl gap-20 px-4 lg:px-8`}
+      className={`mx-auto bg-stone-50 flex flex-col lg:flex-row justify-between max-w-screen-xl lg:gap-20 px-4 lg:px-8`}
     >
       <div className="flex flex-col justify-center h-full mt-40">
         <h1 className="text-4xl font-bold text-black text-center lg:text-left">

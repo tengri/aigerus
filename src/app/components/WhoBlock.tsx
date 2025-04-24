@@ -23,10 +23,10 @@ export default function WhoBlock() {
   return (
     <div className="bg-white">
       <div
-        className="max-w-screen-xl flex gap-20 space-between py-20 space-between relative lg:flex-row flex-col px-4 lg:px-8 mx-auto"
+        className="max-w-screen-xl flex gap-20 space-between lg:py-20 space-between relative lg:flex-row flex-col px-4 lg:px-8 mx-auto"
         id="who"
       >
-        <div className="relative mb-30 min-w-140 mx-auto lg:mx-0">
+        <div className="relative mb-30 min-w-140 mx-auto lg:mx-0 lg:block hidden">
           <Image
             src="/images/landing/who-bg.png"
             alt="Айгерим Бекназарова"

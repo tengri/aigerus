@@ -15,6 +15,11 @@ export default function Map() {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
   });
 
+  console.log(
+    "process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ",
+    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+  );
+
   return isLoaded ? (
     <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={13}>
       {apartments.map((apartment) => (
