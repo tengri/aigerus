@@ -8,7 +8,7 @@ const params = [
   //   },
   {
     name: "area",
-    value: "32 м2",
+    value: "32 м²",
   },
   {
     name: "bed",
@@ -26,18 +26,17 @@ export default function AppartamentRowCard({
   apartment: IApartment;
 }) {
   return (
-    <div className="flex flex-row gap-4">
-      <div className="w-1/3">
+    <div className="flex flex-col gap-4 lg:flex-row items-center bg-neutral-100 shadow-[0px_3px_20px_0px_rgba(34,34,35,0.06)] rounded-t-2xl">
+      <div className="w-full h-full relative flex-1 min-h-96">
         <Image
           src={apartment.image}
           alt={apartment.name}
-          width={100}
-          height={100}
-          className="w-full h-full object-cover"
+          fill
+          className="w-full h-full object-cover rounded-t-2xl lg:rounded-l-2xl lg:rounded-t-none"
           sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 660px, (max-width: 1919px) 51vw, 667px"
         />
       </div>
-      <div className="w-2/3 py-16 px-14">
+      <div className="px-14 flex-1 flex flex-col justify-center">
         <div className="flex flex-row justify-between">
           <p className="text-neutral-600 text-lg">{apartment.address}</p>
           <div className="text-green-500 font-bold text-xl">
@@ -51,10 +50,7 @@ export default function AppartamentRowCard({
         <hr className="my-8" />
         <div className="flex flex-row gap-4">
           {params.map((param) => (
-            <div
-              key={param.name}
-              className="text-neutral-600 text-lg px-3.5 py-2.5 bg-white rounded-[40px] shadow-[0px_1px_6px_0px_rgba(34,34,35,0.09)] inline-flex justify-start items-center gap-1"
-            >
+            <div key={param.name} className="rounded-2xl">
               <Image
                 src={`/icons/${param.name}.svg`}
                 alt={param.name}

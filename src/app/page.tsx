@@ -6,7 +6,7 @@ import AppartamentList from "./components/AppartamentList";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-stone-50">
       <Hero />
       <WhoBlock />
       <AppartamentList />

@@ -6,6 +6,7 @@ export default function PhoneIcon() {
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="inline-block"
     >
       <g clipPath="url(#clip0_11310_1274)">
         <path

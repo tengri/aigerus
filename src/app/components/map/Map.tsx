@@ -15,7 +15,6 @@ export default function Map() {
     id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
   });
-  console.log("Map isLoaded", isLoaded);
 
   const [map, setMap] = useState(null);
 

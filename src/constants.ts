@@ -14,26 +14,18 @@ export const apartments: IApartment[] = [
     price: 20_000,
     oldPrice: 25_000,
     overview: `Уважаемые гости, бронирующие мгновенно, обращайте пожалуйста, внимание на время заезда и выезда! заезд после 14.00, выезд до 12.00`,
-  },
-  {
-    id: "abay-130-1",
-    name: "1-комнатная квартира · 40 м² · 9/9 этаж, Абая 130 — ТРЦ Глобус, Мега, Атакент",
-    residence: "Abay 130",
-    image: "/images/properties/abay-130-1/1.png",
-    address: `Проспект Абая 164/1`,
-    coordinates: {
-      lat: 43.23729539272685,
-      lng: 76.88846628601357,
-    },
-    price: 18_000,
-    oldPrice: 22_000,
-    overview: `Вашему вниманию предоставляется однокомнатная квартира в ЖК Абая 130, которая расположена на центральном проспекте г. Алматы. квартира чистая, аккуратная, без посторонних запахов`,
+    params: [
+      {
+        name: "area",
+        value: "45 м²",
+      },
+    ],
   },
   {
     id: "terracotta-1",
     name: "2-комнатная квартира · 35 м² · 12/12 этаж, Досмухамедова 97 — Стадион",
     residence: "Terracotta",
-    image: "/images/properties/terracotta/1.jpg",
+    image: "/images/properties/terracotta-1/1.jpg",
     address: `Проспект Абая 164/1`,
     coordinates: {
       lat: 43.238949,
@@ -43,11 +35,17 @@ export const apartments: IApartment[] = [
     oldPrice: 22_000,
     overview:
       "Вашему вниманию предоставляется евро двухкомнатная квартира в ЖК Terracotta, которая расположена на центральном проспекте г. Алматы по Абая 164/1.",
+    params: [
+      {
+        name: "area",
+        value: "35 м²",
+      },
+    ],
   },
   {
     id: "paladium-1",
     name: "2-комнатная квартира · 35 м² · 12/12 этаж, Досмухамедова 97 — Стадион",
-    image: "/images/properties/paladium/1.png",
+    image: "/images/properties/paladium-1/1.png",
     residence: "Paladium",
     address: `Досмухамедова 97 — Стадион`,
     coordinates: {
@@ -57,5 +55,11 @@ export const apartments: IApartment[] = [
     price: 20_000,
     oldPrice: 25_000,
     overview: `Сдается новая, чистая и аккуратная 2-х комнатная квартира с кухней студией в жилом комплексе "Palladium", после ремонта`,
+    params: [
+      {
+        name: "area",
+        value: "35 м²",
+      },
+    ],
   },
 ];

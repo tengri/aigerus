@@ -1,4 +1,4 @@
-import StarIcon from "./StarIcon";
+import StarIcon from "./icons/StarIcon";
 
 export default function Reviews() {
   const reviews = [
