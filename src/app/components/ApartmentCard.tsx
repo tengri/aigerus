@@ -12,7 +12,7 @@ export default function ApartmentCard({
       href={`/apartments/${apartment.id}`}
       className="rounded-4xl h-150 relative gap-4 rounded-xl shadow-lg mt-8 min-w-100 flex flex-col"
     >
-      <div className="w-full relative overflow-hidden h-1/3">
+      <div className="w-full relative overflow-hidden h-full">
         <Image
           key={apartment.id}
           src={apartment.image}
