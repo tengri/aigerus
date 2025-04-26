@@ -58,7 +58,9 @@ export default function WhoBlock() {
             {facts.map((fact) => (
               <div className="flex flex-row space-between" key={fact.number}>
                 <div className="flex flex-col">
-                  <p className="text-b font-bold text-4xl">{fact.number}</p>
+                  <p className="text-b font-bold text-4xl text-green-500">
+                    {fact.number}
+                  </p>
                   <p className="text-neutral-500 text-lg">{fact.description}</p>
                 </div>
               </div>

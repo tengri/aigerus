@@ -10,15 +10,13 @@ const containerStyle = {
 const center = apartments[0].coordinates;
 
 export default function Map() {
+  if (!process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY) {
+    throw new Error("NEXT_PUBLIC_GOOGLE_MAPS_API_KEY is not set");
+  }
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
   });
-
-  console.log(
-    "process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ",
-    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-  );
 
   return isLoaded ? (
     <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={13}>

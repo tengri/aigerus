@@ -49,12 +49,12 @@ const MobileNav = () => {
         </button>
       </div>
       {isOpen && (
-        <div className="flex flex-col gap-4 bg-neutral-100 p-8 w-full absolute top-28 left-0 z-20">
+        <div className="flex flex-col gap-4 bg-neutral-100  p-8 w-full absolute top-28 left-0 z-20">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-2xl  transition-colors hover:bg-green-500 hover:text-neutral-100 p-2 rounded-md"
+              className="text-2xl p-2 rounded-md hover:text-green-500 transition-colors"
             >
               {item.label}
             </Link>
@@ -73,7 +73,7 @@ const DesktopNav = () => {
         {NAV_ITEMS.map((item) => (
           <Link
             key={item.href}
-            className="p-2 px-4 rounded-md hover:bg-green-500 hover:text-neutral-100 transition-colors"
+            className="p-2 px-4 rounded-md hover:text-green-500 transition-colors"
             href={item.href}
           >
             {item.label}
