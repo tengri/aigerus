@@ -31,6 +31,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Aigerus.com Квартиры посуточно в Алматы</title>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-100`}

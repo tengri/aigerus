@@ -1,3 +1,13 @@
+export interface IPhoto {
+  documentId: string;
+  name: string;
+  alternativeText: string | null;
+  caption: string | null;
+  width: number;
+  height: number;
+  url: string;
+}
+
 export interface IApartment {
   id: string;
   name: string;
@@ -12,4 +22,5 @@ export interface IApartment {
     name: string;
     value: string;
   }[];
+  photos: IPhoto[];
 }

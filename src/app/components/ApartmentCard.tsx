@@ -7,19 +7,23 @@ export default function ApartmentCard({
 }: {
   apartment: IApartment;
 }) {
+  console.log("ApartmentCard apartment: ", apartment);
+  console.log("ApartmentCard apartment.photos: ", apartment.photos);
   return (
     <Link
       href={`/apartments/${apartment.id}`}
       className="rounded-4xl h-150 relative gap-4 rounded-xl shadow-lg mt-8 min-w-100 flex flex-col"
     >
       <div className="w-full relative overflow-hidden h-full">
-        <Image
-          key={apartment.id}
-          src={apartment.image}
-          alt={apartment.name}
-          className="object-cover rounded-t-2xl"
-          fill={true}
-        />
+        {apartment.photos.map((photo) => (
+          <Image
+            key={photo.documentId}
+            src={photo.url}
+            alt={apartment.name}
+            className="object-cover rounded-t-2xl"
+            fill={true}
+          />
+        ))}
       </div>
       <div className="p-7 flex flex-col gap-3">
         <h4 className="text-accent font-bold text-2xl">{apartment.price} тг</h4>

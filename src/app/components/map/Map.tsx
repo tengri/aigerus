@@ -1,15 +1,19 @@
 "use client";
 
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import { apartments } from "@/constants";
+import { IApartment } from "@/types";
+
 const containerStyle = {
   width: "100%",
   height: "100%",
 };
 
-const center = apartments[0].coordinates;
+export default function Map({ apartments }: { apartments: IApartment[] }) {
+  const center = {
+    lat: 43.24541647453766,
+    lng: 76.93487181299527,
+  };
 
-export default function Map() {
   if (!process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY) {
     throw new Error("NEXT_PUBLIC_GOOGLE_MAPS_API_KEY is not set");
   }

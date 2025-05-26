@@ -1,7 +1,11 @@
 import ApartmentCard from "./ApartmentCard";
-import { apartments } from "@/constants";
+import { IApartment } from "@/types";
 
-export default function Apartments() {
+export default function Apartments({
+  apartments,
+}: {
+  apartments: IApartment[];
+}) {
   return (
     <div id="apartments" className=" bg-neutral-300 py-8">
       <div className="max-w-screen-xl mx-auto">

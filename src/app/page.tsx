@@ -3,14 +3,20 @@ import Reviews from "./components/Reviews";
 import WhoBlock from "./components/WhoBlock";
 import MapBlock from "./components/MapBlock";
 import AppartamentList from "./components/AppartamentList";
-
-export default function Home() {
+import { getApartments } from "./actions";
+import { SignIn } from "./components/SingIn";
+export default async function Home() {
+  const apartments = await getApartments();
+  const photos = apartments[0]?.photos || [];
+  console.log("photos: ", photos);
+  console.log("apartments: ", apartments);
   return (
     <main className="bg-stone-50">
+      <SignIn />
       <Hero />
       <WhoBlock />
-      <AppartamentList />
-      <MapBlock />
+      <AppartamentList apartments={apartments} />
+      <MapBlock apartments={apartments} />
       <Reviews />
     </main>
   );

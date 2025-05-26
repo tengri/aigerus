@@ -28,13 +28,16 @@ export default function AppartamentRowCard({
       className="flex flex-col gap-4 lg:flex-row items-center bg-neutral-100 shadow-[0px_3px_20px_0px_rgba(34,34,35,0.06)] rounded-2xl lg:rounded-t-none pb-6 lg:pb-0"
     >
       <div className="w-full h-full relative flex-1 min-h-96">
-        <Image
-          src={apartment.image}
-          alt={apartment.name}
-          fill
-          className="w-full h-full object-cover rounded-t-2xl lg:rounded-l-2xl lg:rounded-t-none"
-          sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 660px, (max-width: 1919px) 51vw, 667px"
-        />
+        {apartment.photos.map((photo) => (
+          <Image
+            key={photo.url}
+            src={photo.url}
+            alt={apartment.name}
+            fill
+            className="w-full h-full object-cover rounded-t-2xl lg:rounded-l-2xl lg:rounded-t-none"
+            sizes="(max-width: 479px) 100vw, (max-width: 767px) 92vw, (max-width: 991px) 660px, (max-width: 1919px) 51vw, 667px"
+          />
+        ))}
       </div>
       <div className="px-6 lg:px-14 flex-1 flex flex-col justify-center">
         <div className="flex flex-col lg:flex-row justify-between">
