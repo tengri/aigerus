@@ -1,5 +1,9 @@
 import ApartmentCard from "@/app/components/ApartmentCard";
-import { IApartment } from "@/types";
+
+export const getFlats = async () => {
+  const flats = await fetch('')
+  return flats;
+};
 
 export default async function ApartmentsPage() {
   const apartments = await getApartments();

@@ -14,8 +14,8 @@ export function SignIn() {
         });
       }}
     >
-      <input type="text" name="email" placeholder="Email" />
-      <button type="submit">Sign in with Email</button>
+      {/* <input type="text" name="email" placeholder="Email" /> */}
+      {/* <button type="submit">Sign in with Email</button> */}
     </form>
   );
 }
