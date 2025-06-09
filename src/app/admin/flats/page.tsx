@@ -1,17 +1,22 @@
-import Link from "next/link";
-import { getFlats } from "../../actions";
+"use client";
 
-export default async function FlatsPage() {
-  const flats = await getFlats();
+import Link from "next/link";
+import FlatList from "../components/FlatList";
+
+export default function FlatsPage() {
   return (
     <div>
-      <Link href="/admin/flats/new">add new flat</Link>
-      <h1>Flats</h1>
-      <ul>
-        {flats.map((flat: any) => (
-          <li key={flat.id}>{flat.name}</li>
-        ))}
-      </ul>
+      <div className="flex justify-between items-center mt-8 py-4">
+        <h1 className="text-2xl font-bold">Flats</h1>
+        <Link
+          href="/admin/flats/new"
+          className=" bg-green-500 px-4 py-2 rounded-md text-white"
+        >
+          add new flat
+        </Link>
+      </div>
+
+      <FlatList />
     </div>
   );
 }

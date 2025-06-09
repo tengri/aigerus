@@ -1,10 +1,10 @@
 import Map from "./map/Map";
-import { IApartment } from "@/types";
+import { IFlat } from "@/types";
 
-export default function MapBlock({ apartments }: { apartments: IApartment[] }) {
+export default function MapBlock({ flats }: { flats: IFlat[] }) {
   return (
     <div className="w-full h-200">
-      <Map apartments={apartments} />
+      <Map flats={flats} />
     </div>
   );
 }

@@ -12,15 +12,11 @@ const NAV_ITEMS = [
   },
   {
     label: "Апартаменты",
-    href: "/apartments",
+    href: "/flats",
   },
   {
     label: "Правила проживания",
     href: "/rules",
-  },
-  {
-    label: "Войти",
-    href: "/login",
   },
 ];
 

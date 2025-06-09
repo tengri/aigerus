@@ -7,28 +7,12 @@ import BurgerIcon from "./icons/BurgerIcon";
 
 const NAV_ITEMS = [
   {
-    label: "Дашборд",
+    label: "Dashboard",
     href: "/admin",
   },
   {
-    label: "Календарь",
-    href: "/admin/calendar",
-  },
-  {
-    label: "Квартиры",
+    label: "Flats",
     href: "/admin/flats",
-  },
-  {
-    label: "Апартаменты",
-    href: "/apartments",
-  },
-  {
-    label: "Правила проживания",
-    href: "/rules",
-  },
-  {
-    label: "Войти",
-    href: "/login",
   },
 ];
 
@@ -47,7 +31,7 @@ const MobileNav = () => {
   return (
     <div className="lg:hidden w-full flex flex-col z-10">
       <div className="flex gap-4 justify-between items-center bg-neutral-100 p-8 w-full flex-none">
-        <Logo />
+        <Logo href="/admin" />
 
         <button
           className="py-2 px-4 rounded-md  bg-green-500 text-neutral-100 transition-colors cursor-pointer"

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import colors from "tailwindcss/colors";
 
-export default function Logo() {
+export default function Logo({ href }: { href: string }) {
   return (
-    <Link href="/" className="flex gap-2">
+    <Link href={href || "/"} className="flex gap-2 cursor-pointer">
       <svg
         width="29"
         height="29"

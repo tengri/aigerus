@@ -1,4 +1,4 @@
-export default function Field({
+export default function FormField({
   label,
   name,
   children,
@@ -8,7 +8,7 @@ export default function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 w-full">
       <label htmlFor={name}>{label}</label>
       {children}
     </div>

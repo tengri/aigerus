@@ -1,26 +1,29 @@
 export interface IPhoto {
-  documentId: string;
-  name: string;
-  alternativeText: string | null;
-  caption: string | null;
   width: number;
   height: number;
   url: string;
 }
 
-export interface IApartment {
+export interface IFlat {
   id: string;
   name: string;
   image: string;
   residence: string;
   address: string;
-  coordinates: { lat: number; lng: number };
   price: number;
-  oldPrice: number;
-  overview: string;
-  params: {
+  description: string;
+  files: IFiles[];
+  floor: number;
+  totalFloors: number;
+  capacity: number;
+  area: number;
+  tags: {
     name: string;
     value: string;
   }[];
-  photos: IPhoto[];
+}
+
+export interface IListResponse<T> {
+  data: T[];
+  total: number;
 }

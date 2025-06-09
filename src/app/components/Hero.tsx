@@ -7,7 +7,6 @@ const HERO_IMAGE_WIDTH = 1054 / HERO_IMAGE_KOEF;
 const HERO_IMAGE_HEIGHT = 1700 / HERO_IMAGE_KOEF;
 
 export default function Hero() {
-  console.log("HERO_IMAGE_HEIGHT: ", HERO_IMAGE_HEIGHT);
   return (
     <div
       className={`mx-auto bg-stone-50 flex flex-col lg:flex-row justify-between max-w-screen-xl lg:gap-20 px-4 lg:px-8`}
@@ -33,7 +32,7 @@ export default function Hero() {
           </a>
           <Link
             className="w-full text-center lg:w-auto bg-white px-8 py-4 rounded-xl hover:bg-neutral-800 hover:text-neutral-100 font-bold"
-            href="/apartments"
+            href="/flats"
           >
             Смотреть апартаменты
           </Link>

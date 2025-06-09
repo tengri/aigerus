@@ -1,14 +1,14 @@
 "use client";
 
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import { IApartment } from "@/types";
+import { IFlat } from "@/types";
 
 const containerStyle = {
   width: "100%",
   height: "100%",
 };
 
-export default function Map({ apartments }: { apartments: IApartment[] }) {
+export default function Map({ flats }: { flats: IFlat[] }) {
   const center = {
     lat: 43.24541647453766,
     lng: 76.93487181299527,
@@ -24,8 +24,8 @@ export default function Map({ apartments }: { apartments: IApartment[] }) {
 
   return isLoaded ? (
     <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={13}>
-      {apartments.map((apartment) => (
-        <Marker key={apartment.id} position={apartment.coordinates} />
+      {flats.map((flat) => (
+        <Marker key={flat.id} position={flat.coordinates} />
       ))}
       {/* Child components, such as markers, info windows, etc. */}
       <></>
