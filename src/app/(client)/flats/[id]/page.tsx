@@ -9,7 +9,6 @@ export async function generateMetadata(props: {
   searchParams: SearchParams;
 }) {
   const { id } = await props.params;
-  const { url } = await props.searchParams;
 
   const flat = (
     await fetch(process.env.NEXT_PUBLIC_API_URL + `/flats/${id}`).then((res) =>
@@ -25,8 +24,6 @@ export default async function ApartmentPage(props: {
   searchParams: SearchParams;
 }) {
   const { id } = await props.params;
-  const { url } = await props.searchParams;
-  console.log("url: ", url);
   const flat = (await fetch(
     process.env.NEXT_PUBLIC_API_URL + `/flats/${id}`,
   ).then((res) => res.json())) as IFlat;

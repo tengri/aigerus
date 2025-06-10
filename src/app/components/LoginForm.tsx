@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
-import { useQueryClient } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
 
 type LoginFields = {
@@ -27,7 +26,6 @@ const schema = z.object({
 
 export default function LoginPage() {
   const router = useRouter();
-  const queryClient = useQueryClient();
 
   const login = async (data: LoginFields) => {
     const response = await fetch("http://localhost:3000/auth/login", {

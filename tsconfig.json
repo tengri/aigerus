@@ -21,7 +21,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/auth": ["./src/auth"],
-      "@/prisma": ["./src/prisma"]
+      "@/types": ["./src/types"],
+      "@/app": ["./src/app"],
+      "@/components": ["./src/app/components"],
     }
   },
   "include": [
