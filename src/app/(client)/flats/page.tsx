@@ -8,9 +8,5 @@ export default async function FlatsPage() {
     )
   ).data as IFlat[];
 
-  return (
-    <div>
-      <AppartamentList flats={flats} />
-    </div>
-  );
+  return <AppartamentList flats={flats} />;
 }

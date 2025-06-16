@@ -1,8 +1,8 @@
-import Hero from "../components/Hero";
-import Reviews from "../components/Reviews";
-import WhoBlock from "../components/WhoBlock";
-import AppartamentList from "../components/FlatList";
-import { SignIn } from "../components/SingIn";
+import Hero from "./components/Hero";
+import Reviews from "./components/Reviews";
+import WhoBlock from "./components/WhoBlock";
+import AppartamentList from "./components/FlatList";
+import { SignIn } from "./components/SingIn";
 import { IFlat } from "@/types";
 
 export default async function Home() {
