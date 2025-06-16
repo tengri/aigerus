@@ -12,7 +12,7 @@ export interface IFlat {
   address: string;
   price: number;
   description: string;
-  files: IFiles[];
+  files: IPhoto[];
   floor: number;
   totalFloors: number;
   capacity: number;

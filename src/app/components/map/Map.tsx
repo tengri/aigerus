@@ -25,7 +25,7 @@ export default function Map({ flats }: { flats: IFlat[] }) {
   return isLoaded ? (
     <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={13}>
       {flats.map((flat) => (
-        <Marker key={flat.id} position={flat.coordinates} />
+        <Marker key={flat.id} position={{ lat: 0, lng: 0 }} />
       ))}
       {/* Child components, such as markers, info windows, etc. */}
       <></>
