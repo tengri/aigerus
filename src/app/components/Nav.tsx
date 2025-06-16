@@ -63,9 +63,9 @@ const MobileNav = () => {
 
 const DesktopNav = () => {
   return (
-    <nav className="bg-neutral-100 flex justify-between items-center py-8 h-28 max-w-screen-xl mx-auto px-4 hidden lg:flex">
+    <nav className="bg-neutral-100 justify-evenly items-center py-8 h-28 max-w-screen-xl mx-auto px-4 hidden lg:flex w-full">
       <Logo />
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-evenly">
         {NAV_ITEMS.map((item) => (
           <Link
             key={item.href}

@@ -20,7 +20,7 @@ interface FormFlat {
   area: number;
 }
 
-export default function EditFlatForm({ flat }: { flat?: IFlat }) {
+export default function EditFlatForm({ flat }: { flat: IFlat | undefined }) {
   const isEditForm = !!flat?.id;
   const queryClient = useQueryClient();
 

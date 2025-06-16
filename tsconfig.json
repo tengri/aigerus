@@ -23,7 +23,7 @@
       "@/auth": ["./src/auth"],
       "@/types": ["./src/types"],
       "@/app": ["./src/app"],
-      "@/components": ["./src/app/components"],
+      "@/components": ["./src/app/components"]
     }
   },
   "include": [
