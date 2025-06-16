@@ -21,60 +21,46 @@ interface FormFlat {
 }
 
 export default function EditFlatForm({ flat }: { flat: IFlat | undefined }) {
-  const isEditForm = !!flat?.id;
   const queryClient = useQueryClient();
 
-  const createFlatMutation = useMutation({
-    mutationFn: (data: FormFlat) => {
-      return fetch("http://localhost:3000/flats", {
-        method: "POST",
-        mode: "cors",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
-        },
-      });
-    },
-    onSuccess: () => {
-      toast.success("Flat created successfully");
-      queryClient.invalidateQueries({ queryKey: ["flats"] });
-    },
-    onError: () => {
-      toast.error("Failed to create flat");
-    },
-  });
-
-  const updateFlatMutation = useMutation({
+  const saveFlatMutation = useMutation({
     mutationFn: async (data: FormFlat) => {
-      const response = await fetch(`http://localhost:3000/flats/${flat.id}`, {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
-        },
-      });
-      if (!response.ok) {
-        throw new Error("Failed to update flat");
+      if (flat?.id) {
+        const response = await fetch(`http://localhost:3000/flats/${flat.id}`, {
+          method: "PUT",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Failed to update flat");
+        }
+        return response;
+      } else {
+        return fetch("http://localhost:3000/flats", {
+          method: "POST",
+          mode: "cors",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+          },
+        });
       }
-      return response;
     },
     onSuccess: () => {
-      toast.success("Flat updated successfully");
+      toast.success("Квартира сохранена");
       queryClient.invalidateQueries({ queryKey: ["flats", flat?.id] });
     },
     onError: () => {
-      toast.error("Failed to update flat");
+      toast.error("Не удалось сохранить квартиру");
     },
   });
 
   const handleSaveFlat = async (data: FormFlat) => {
-    if (isEditForm) {
-      updateFlatMutation.mutate(data);
-    } else {
-      createFlatMutation.mutate(data);
-    }
+    saveFlatMutation.mutate(data);
   };
 
   const schema = z.object({
@@ -204,13 +190,9 @@ export default function EditFlatForm({ flat }: { flat: IFlat | undefined }) {
         <button
           className="bg-blue-500 text-white p-2 rounded-md cursor-pointer"
           type="submit"
-          disabled={
-            createFlatMutation.isPending || updateFlatMutation.isPending
-          }
+          disabled={saveFlatMutation.isPending}
         >
-          {createFlatMutation.isPending || updateFlatMutation.isPending
-            ? "Saving..."
-            : "Save Flat"}
+          {saveFlatMutation.isPending ? "Сохранение..." : "Сохранить"}
         </button>
       </form>
     </div>
