@@ -4,15 +4,6 @@ type Params = Promise<{ id: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 import FlatCard from "@/app/components/FlatCard";
 
-export async function generateStaticParams() {
-  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/flats");
-  const result = await response.json();
-  const flats = result.data as IFlat[];
-  return flats.map((flat) => ({
-    id: flat.id,
-  }));
-}
-
 export async function generateMetadata(props: {
   params: Params;
   searchParams: SearchParams;

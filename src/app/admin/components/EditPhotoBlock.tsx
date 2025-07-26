@@ -22,7 +22,7 @@ export default function EditPhotoBlock({ flat }: { flat: IFlat }) {
         },
       );
 
-      console.log('response: ', response);
+      console.log("response: ", response);
       if (response.ok) {
         toast.success("Files uploaded successfully");
       } else {
