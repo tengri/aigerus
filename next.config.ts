@@ -14,9 +14,7 @@ const nextConfig: NextConfig = {
     ],
   },
   // Ensure dynamic rendering for API-dependent pages
-  experimental: {
-    serverComponentsExternalPackages: [],
-  },
+  serverExternalPackages: [],
 };
 
 export default nextConfig;
