@@ -4,11 +4,12 @@ import { IFlat } from "@/types";
 
 export default function EditPhotoBlock({ flat }: { flat: IFlat }) {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
-    onDrop: async (acceptedFiles) => {
+    onDrop: async (acceptedFiles: File[]) => {
       const formData = new FormData();
-      acceptedFiles.forEach((file) => {
+      acceptedFiles.forEach((file: File) => {
         formData.append("file", file);
         formData.append("type", "image");
+        formData.append("flatId", flat.id);
       });
       const response = await fetch(
         `http://localhost:3000/flats/${flat.id}/files`,
@@ -16,11 +17,12 @@ export default function EditPhotoBlock({ flat }: { flat: IFlat }) {
           method: "POST",
           body: formData,
           headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+            Authorization: `Bearer   ${sessionStorage.getItem("access_token")}`,
           },
         },
       );
 
+      console.log('response: ', response);
       if (response.ok) {
         toast.success("Files uploaded successfully");
       } else {
