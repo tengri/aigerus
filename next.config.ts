@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
+  experimental: {
+    optimizeCss: false,
+    useLightningcss: false,
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -13,7 +17,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Ensure dynamic rendering for API-dependent pages
   serverExternalPackages: [],
 };
 
