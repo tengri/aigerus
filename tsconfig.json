@@ -32,6 +32,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/components/FlatGrid.tsx"
-  ],
+, "next.config.mjs"  ],
   "exclude": ["node_modules"]
 }

@@ -13,7 +13,9 @@ export default function AdminFlatPageClient() {
   const { data: flat, isFetched } = useQuery<IFlat>({
     queryKey: ["flat", flatId],
     queryFn: () =>
-      fetch(`http://localhost:3000/flats/${flatId}`).then((res) => res.json()),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/flats/${flatId}`).then((res) =>
+        res.json(),
+      ),
     enabled: !!flatId,
   });
 

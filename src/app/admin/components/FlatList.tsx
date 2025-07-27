@@ -12,7 +12,9 @@ export default function FlatList() {
   } = useQuery<IListResponse<IFlat>>({
     queryKey: ["flats"],
     queryFn: () =>
-      fetch("http://localhost:3000/flats").then((res) => res.json()),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/flats`).then((res) =>
+        res.json(),
+      ),
   });
 
   if (isError) {

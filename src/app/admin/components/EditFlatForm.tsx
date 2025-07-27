@@ -26,20 +26,23 @@ export default function EditFlatForm({ flat }: { flat?: IFlat }) {
   const saveFlatMutation = useMutation({
     mutationFn: async (data: FormFlat) => {
       if (flat?.id) {
-        const response = await fetch(`http://localhost:3000/flats/${flat.id}`, {
-          method: "PUT",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/flats/${flat.id}`,
+          {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+            },
           },
-        });
+        );
         if (!response.ok) {
           throw new Error("Failed to update flat");
         }
         return response;
       } else {
-        return fetch("http://localhost:3000/flats", {
+        return fetch(`${process.env.NEXT_PUBLIC_API_URL}/flats`, {
           method: "POST",
           mode: "cors",
           body: JSON.stringify(data),

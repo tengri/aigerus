@@ -12,7 +12,7 @@ export default function EditPhotoBlock({ flat }: { flat: IFlat }) {
         formData.append("flatId", flat.id);
       });
       const response = await fetch(
-        `http://localhost:3000/flats/${flat.id}/files`,
+        `${process.env.NEXT_PUBLIC_API_URL}/flats/${flat.id}/files`,
         {
           method: "POST",
           body: formData,

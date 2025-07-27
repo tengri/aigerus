@@ -28,13 +28,16 @@ export default function LoginPage() {
   const router = useRouter();
 
   const login = async (data: LoginFields) => {
-    const response = await fetch("http://localhost:3000/auth/login", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
-    });
+    );
 
     return (await response.json()) as LoginResponse;
   };
