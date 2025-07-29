@@ -1,7 +1,5 @@
 import { IFlat } from "@/types";
 import PhotosViewer from "./PhotosViewer";
-import Link from "next/link";
-import Image from "next/image";
 
 export default function FlatCard({ flat }: { flat: IFlat }) {
   const params = [
@@ -31,7 +29,9 @@ export default function FlatCard({ flat }: { flat: IFlat }) {
 
   return (
     <div className="flex flex-col gap-2 w-full h-full m-auto">
-      <h2 className="text-neutral-800 font-bold text-2xl mt-5 px-8">{flat.name}</h2>
+      <h2 className="text-neutral-800 font-bold text-2xl mt-5 px-8">
+        {flat.name}
+      </h2>
       <div className="w-full h-full reletive flex-1 min-h-96">
         <PhotosViewer photos={flat.files} />
       </div>
@@ -47,7 +47,7 @@ export default function FlatCard({ flat }: { flat: IFlat }) {
 
           {/* <hr className="my-8 border-neutral-200 border-t-2" /> */}
 
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-col md:flex-row gap-3">
             <div className="flex flex-col gap-2 flex-1 min-w-1/3">
               {/* <h1 className="text-neutral-800 font-bold text-2xl">{flat.name}</h1> */}
               {/* <p className="text-accent font-bold text-2xl text-green-500">

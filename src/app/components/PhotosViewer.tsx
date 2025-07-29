@@ -3,17 +3,17 @@
 // import Image from "next/image";
 import { IPhoto } from "@/types";
 // import Link from "next/link";
-import { PhotoProvider, PhotoView, PhotoSlider } from "react-photo-view";
+import { PhotoProvider, PhotoSlider } from "react-photo-view";
 import { useState } from "react";
 import "react-photo-view/dist/react-photo-view.css";
 
 export default function PhotosViewer({ photos }: { photos: IPhoto[] }) {
+  const [visible, setVisible] = useState<boolean>(false);
+  const [index, setIndex] = useState<number>(0);
+
   if (!photos || photos.length === 0) {
     return null;
   }
-
-  const [visible, setVisible] = useState<boolean>(false);
-  const [index, setIndex] = useState<number>(0);
 
   return (
     // <div className="flex flex-col gap-4 w-full m-auto">
@@ -36,7 +36,7 @@ export default function PhotosViewer({ photos }: { photos: IPhoto[] }) {
           <img
             src={photo.url}
             className="h-full object-cover lg:rounded-2xl"
-            alt={photo.name}
+            key={photo.url}
           />
         ))}
         <div className="absolute bottom-8 text-center text-white bg-black/50 p-2 cursor-pointer">
