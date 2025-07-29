@@ -1,43 +1,63 @@
-import Image from "next/image";
+"use client";
+
+// import Image from "next/image";
 import { IPhoto } from "@/types";
-import Link from "next/link";
+// import Link from "next/link";
+import { PhotoProvider, PhotoView, PhotoSlider } from "react-photo-view";
+import { useState } from "react";
+import "react-photo-view/dist/react-photo-view.css";
 
 export default function PhotosViewer({ photos }: { photos: IPhoto[] }) {
   if (!photos || photos.length === 0) {
     return null;
   }
 
-  const [mainPhoto, ...restPhotos] = photos.slice(0, 4);
+  const [visible, setVisible] = useState<boolean>(false);
+  const [index, setIndex] = useState<number>(0);
 
   return (
-    <div className="flex flex-col gap-4 w-full h-full m-auto">
-      <div className="flex gap-4 m-auto h-full relative min-h-[400px] min-w-[1024px]">
-        <Link
-          href={mainPhoto.url}
-          target="_blank"
-          className="w-full h-full"
-          key={mainPhoto.url}
-        >
-          <Image src={mainPhoto.url} alt="img" fill={true} />
-        </Link>
-      </div>
-      <div className="flex flex-row gap-4 w-full">
-        {restPhotos.map((photo) => (
-          <Link
-            href={photo.url}
-            target="_blank"
-            className="w-full h-full"
-            key={photo.url}
-          >
-            <Image
-              src={photo.url}
-              alt="img"
-              width={photo.width}
-              height={photo.height}
-            />
-          </Link>
+    // <div className="flex flex-col gap-4 w-full m-auto">
+    <PhotoProvider>
+      {/* <div className="flex gap-4 m-auto h-full relative min-h-[400px] min-w-[1024px]"> */}
+      {/* <div className="w-1/3 flex flex-col gap-4"> */}
+      <PhotoSlider
+        images={photos.map((item) => ({ src: item.url, key: item.url }))}
+        visible={visible}
+        onClose={() => setVisible(false)}
+        index={index}
+        onIndexChange={setIndex}
+      />
+
+      <button
+        onClick={() => setVisible(true)}
+        className="relative h-96 flex gap-4 p-8 overflow-hidden"
+      >
+        {photos.map((photo, index) => (
+          <img
+            src={photo.url}
+            className="h-full object-cover lg:rounded-2xl"
+            alt={photo.name}
+          />
         ))}
-      </div>
-    </div>
+        <div className="absolute bottom-8 text-center text-white bg-black/50 p-2 cursor-pointer">
+          Больше фото
+        </div>
+      </button>
+
+      {/* {photos.map((photo, index) => (
+              <div key={photo.url} className="h-1/2">
+                <PhotoView src={photo.url}>
+                  <img
+                    src={photo.url}
+                    alt={`Photo ${index + 2}`}
+                    className="w-full h-full object-cover rounded-lg cursor-pointer"
+                  />
+                </PhotoView>
+              </div>
+            ))} */}
+      {/* </div> */}
+      {/* </div> */}
+    </PhotoProvider>
+    // </div>
   );
 }
