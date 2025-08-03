@@ -1,7 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import FlatList from "../components/FlatList";
+import ServerFlatList from "../components/ServerFlatList";
 
 export default function FlatsPage() {
   return (
@@ -16,7 +14,7 @@ export default function FlatsPage() {
         </Link>
       </div>
 
-      <FlatList />
+      <ServerFlatList />
     </div>
   );
 }

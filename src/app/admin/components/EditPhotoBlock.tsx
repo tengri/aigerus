@@ -1,31 +1,34 @@
+"use client";
+
 import { useDropzone } from "react-dropzone";
 import { toast } from "react-toastify";
 import { IFlat } from "@/types";
+import { uploadFlatFiles } from "../actions/flat-actions";
 
 export default function EditPhotoBlock({ flat }: { flat: IFlat }) {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     onDrop: async (acceptedFiles: File[]) => {
-      const formData = new FormData();
-      acceptedFiles.forEach((file: File) => {
-        formData.append("file", file);
-        formData.append("type", "image");
-        formData.append("flatId", flat.id);
-      });
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/flats/${flat.id}/files`,
-        {
-          method: "POST",
-          body: formData,
-          headers: {
-            Authorization: `Bearer   ${sessionStorage.getItem("access_token")}`,
-          },
-        },
-      );
+      try {
+        const formData = new FormData();
+        acceptedFiles.forEach((file: File) => {
+          formData.append("file", file);
+          formData.append("type", "image");
+          formData.append("flatId", flat.id);
+        });
 
-      console.log("response: ", response);
-      if (response.ok) {
-        toast.success("Files uploaded successfully");
-      } else {
+        const token = sessionStorage.getItem("access_token");
+        const result = await uploadFlatFiles(
+          flat.id,
+          formData,
+          token || undefined,
+        );
+
+        if (result.success) {
+          toast.success("Files uploaded successfully");
+        } else {
+          toast.error("Failed to upload files");
+        }
+      } catch (error) {
         toast.error("Failed to upload files");
       }
     },

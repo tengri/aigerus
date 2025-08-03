@@ -1,4 +1,5 @@
 import { IFlat } from "@/types";
+import { getFlat } from "@/app/admin/actions/flat-actions";
 
 type Params = Promise<{ id: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -12,22 +13,8 @@ export async function generateMetadata(props: {
   searchParams: SearchParams;
 }) {
   const { id } = await props.params;
-
-  let flat: IFlat | null = null;
-  try {
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/flats/${id}`,
-      {
-        cache: "no-store",
-      },
-    );
-    if (response.ok) {
-      const data = await response.json();
-      flat = data.data as IFlat;
-    }
-  } catch (error) {
-    console.error("Failed to fetch flat for metadata:", error);
-  }
+  const result = await getFlat(id);
+  const flat = result.success ? result.data : null;
 
   return { title: flat?.name || "Apartment" };
 }
@@ -37,22 +24,8 @@ export default async function ApartmentPage(props: {
   searchParams: SearchParams;
 }) {
   const { id } = await props.params;
-
-  let flat: IFlat | null = null;
-  try {
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/flats/${id}`,
-      {
-        cache: "no-store",
-      },
-    );
-    if (response.ok) {
-      const data = await response.json();
-      flat = data as IFlat;
-    }
-  } catch (error) {
-    console.error("Failed to fetch flat:", error);
-  }
+  const result = await getFlat(id);
+  const flat = result.success ? result.data : null;
 
   if (!flat) {
     return (

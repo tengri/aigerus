@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
-import { useMutation } from "@tanstack/react-query";
+import { useTransition } from "react";
+import { loginUser } from "@/app/admin/actions/flat-actions";
 
 type LoginFields = {
   email: string;
@@ -26,39 +27,7 @@ const schema = z.object({
 
 export default function LoginPage() {
   const router = useRouter();
-
-  const login = async (data: LoginFields) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
-
-    return (await response.json()) as LoginResponse;
-  };
-
-  const { mutate: loginMutation, isPending: isLoading } = useMutation({
-    mutationFn: login,
-    onSuccess: (parsedResponse: LoginResponse) => {
-      if (parsedResponse.data) {
-        sessionStorage.setItem(
-          "access_token",
-          parsedResponse.data.access_token,
-        );
-        router.push("/admin");
-      } else {
-        toast.error(parsedResponse.error || "Something went wrong");
-      }
-    },
-    onError: (error) => {
-      toast.error(error.message || "Something went wrong");
-    },
-  });
+  const [isPending, startTransition] = useTransition();
 
   const {
     handleSubmit,
@@ -69,7 +38,20 @@ export default function LoginPage() {
   });
 
   const onSubmit = async (data: LoginFields) => {
-    loginMutation(data);
+    startTransition(async () => {
+      try {
+        const result = await loginUser(data.email, data.password);
+
+        if (result.success && result.data) {
+          sessionStorage.setItem("access_token", result.data.access_token);
+          router.push("/admin");
+        } else {
+          toast.error(result.error || "Login failed");
+        }
+      } catch (error) {
+        toast.error("Login failed");
+      }
+    });
   };
 
   return (
@@ -105,9 +87,9 @@ export default function LoginPage() {
         <button
           type="submit"
           className="bg-blue-500 text-white p-2 rounded-md cursor-pointer"
-          disabled={isLoading}
+          disabled={isPending}
         >
-          Login
+          {isPending ? "Logging in..." : "Login"}
         </button>
       </form>
     </div>

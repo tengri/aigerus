@@ -4,9 +4,10 @@ import FormField from "@/app/components/FormField";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useTransition } from "react";
 import { IFlat } from "@/types";
 import { toast } from "react-toastify";
+import { createFlat, updateFlat } from "../actions/flat-actions";
 
 interface FormFlat {
   name: string;
@@ -21,49 +22,28 @@ interface FormFlat {
 }
 
 export default function EditFlatForm({ flat }: { flat?: IFlat }) {
-  const queryClient = useQueryClient();
-
-  const saveFlatMutation = useMutation({
-    mutationFn: async (data: FormFlat) => {
-      if (flat?.id) {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/flats/${flat.id}`,
-          {
-            method: "PUT",
-            body: JSON.stringify(data),
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
-            },
-          },
-        );
-        if (!response.ok) {
-          throw new Error("Failed to update flat");
-        }
-        return response;
-      } else {
-        return fetch(`${process.env.NEXT_PUBLIC_API_URL}/flats`, {
-          method: "POST",
-          mode: "cors",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
-          },
-        });
-      }
-    },
-    onSuccess: () => {
-      toast.success("Квартира сохранена");
-      queryClient.invalidateQueries({ queryKey: ["flats", flat?.id] });
-    },
-    onError: () => {
-      toast.error("Не удалось сохранить квартиру");
-    },
-  });
+  const [isPending, startTransition] = useTransition();
 
   const handleSaveFlat = async (data: FormFlat) => {
-    saveFlatMutation.mutate(data);
+    startTransition(async () => {
+      try {
+        const token = sessionStorage.getItem("access_token");
+        let result;
+        if (flat?.id) {
+          result = await updateFlat(flat.id, data, token || undefined);
+        } else {
+          result = await createFlat(data, token || undefined);
+        }
+
+        if (result.success) {
+          toast.success("Квартира сохранена");
+        } else {
+          toast.error("Не удалось сохранить квартиру");
+        }
+      } catch (error) {
+        toast.error("Не удалось сохранить квартиру");
+      }
+    });
   };
 
   const schema = z.object({
@@ -193,9 +173,9 @@ export default function EditFlatForm({ flat }: { flat?: IFlat }) {
         <button
           className="bg-blue-500 text-white p-2 rounded-md cursor-pointer"
           type="submit"
-          disabled={saveFlatMutation.isPending}
+          disabled={isPending}
         >
-          {saveFlatMutation.isPending ? "Сохранение..." : "Сохранить"}
+          {isPending ? "Сохранение..." : "Сохранить"}
         </button>
       </form>
     </div>
